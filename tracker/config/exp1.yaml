@@ -1,0 +1,53 @@
+
+help: Configuration file
+testID: 101
+exp: 0
+steps: 350
+solver: "All" # "RiskAware" or "RiskNeutral" or "Dist" or "All"
+
+
+
+Problem:
+    robotID: [0, 1, 2]
+    targetID: [0, 1, 2]
+    targetStartPos: [[-1, 0.4], [-1, -0.4], [1.5, 0.25]]  # [x, y], or [x, y, z]
+    targetStartVel: [[0.1, 0], [0.1, 0], [-0.1, 0]]
+    robotStartPos: [[-2.0, 0.6], [-2.0, -0.6], [2.0, 0.2]]
+    robotStartVel: [[0, 0], [0, 0], [0, 0]]
+    target_dyn_type: "second_order_dynamics"
+    robot_dyn_type: "first_order_dynamics"
+    task_assignment_matrix: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]  # robot i is assigned to target j
+    # row is robot, column is target
+
+    N : 2
+    dt: 0.1
+    dim: 2
+    u_bounds: [-1.0, 1.0]  # control effort bounds
+    x_bounds: [[-3, 3], [-3, 3]]  # x bound, and y bound
+    weights : [0.01, 2.0] # control input, trace
+    range_sensor: [15.0, 0.2]   #[range_peak, range_shape]
+    bearing_sensor: [15.0, 0.2]   #[bearing_peak, bearing_shape]
+    min_dist: 0.2
+    max_dist: 6000  # can also affect the quality of the solution, can set inf
+
+
+
+
+
+Zones:
+    nTypeI: 1
+    nTypeII: 1
+    typeI_mu: [[0.1, 0.2]] # [x, y], or [x, y, z]     [[x1, y1], [x2, y2]]
+    typeI_cov: [[0.05, 0.05]]
+    typeII_mu: [[1.2, 1.0]]
+    typeII_cov: [[0.3, 0.3]]
+    typeI_d: [0.004]
+    typeII_d: [0.31]
+    delta: [0.5]
+    eps1: 0.2
+    eps2: 0.8
+
+Settings:
+    plotTargetEst: 0
+    weights: [2, 0.02]
+    max_dist: 4.0

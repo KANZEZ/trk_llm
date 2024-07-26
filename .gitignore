@@ -1,0 +1,9 @@
+CMakeLists.txt
+
+forcespro/
+
+tracker/results
+tracker/paper
+tracker/src/FORCESNLPsolver
+tracker/src/__pycache__
+tracker/src/*.forces
